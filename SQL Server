@@ -1,14 +1,15 @@
 SELECT*
 FROM
-  Customers;
-  
-SELETC
-  CustomerName,
-  City
+    CUSTOMERS
+/* EXAMPLE*/
+SELECT
+    CUSTOMERNAME,
+    CITY
+FROM 
+    CUSTOMERS;
+/*SELECT DISTINCT*/
+SELECT
+    COUNTRY
 FROM
-  Customers;
-  
-SELECT DISTINCT
-  Country 
-FROM
-  Customer;
+    CUSTOMERS;
+    
