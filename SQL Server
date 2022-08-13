@@ -1,0 +1,14 @@
+SELECT*
+FROM
+  Customers;
+  
+SELETC
+  CustomerName,
+  City
+FROM
+  Customers;
+  
+SELECT DISTINCT
+  Country 
+FROM
+  Customer;
