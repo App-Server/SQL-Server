@@ -1,0 +1,24 @@
+# SQL-Server
+USE PythonSQL
+CREATE DATABASE PythonSQL
+-- Execute
+    Vendas(
+    id_venda INT,
+    cliente VARCHAR(50),
+    produto VARCHAR(50),
+    data_venda DATE,
+    preco DECIMAL(6, 2),
+    quantidade INT,
+    )
+--Execute
+INSERT INTO
+    Vendas(
+    id_venda,
+    cliente,
+    produto,
+    data_venda,
+    preco,
+    quantidade
+    )
+VALUES  
+    (1, 'Lira', 'PC', '15/02/2021', 8000, 1)
