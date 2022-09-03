@@ -1,0 +1,127 @@
+# SQL-Server
+--criar database staging area
+create database AdventrueWorkSDW2019_StagingArea
+--ctrl + shift + r
+
+use AdventrueWorkSDW2019_StagingArea
+--Nova Consultar
+SELECT COUNT(*)
+FROM
+    AdvendtureWorksDW2019.dbo.FactInternetSales
+--
+SELECT*
+FROM
+    AdvendtureWorksDW2019.dbo.FactInternetSales
+--criar view FactInternetSales
+create view vw_FactInternetSales AS
+SELECT
+    FactInternetSales.ProductKey,
+    FactInternetSales.CustomerKey,
+    FactInternetSales.PromotionKey,
+    FactInternetSales.SalesTerritoryKey,
+    FactInternetSales.SalesOrderNumber,
+    FactInternetSales.OrderQuantity,
+    FactInternetSales.UnitPrice,
+    FactInternetSales.DiscountAmount,
+    FactInternetSales.ProductStandardCost,
+    FactInternetSales.TaxAmt,
+    FactInternetSales.Freight,
+    FactInternetSales.OrderDate,
+    FactInternetSales.DueDate,
+    FactInternetSales.ShipDate,
+    dg.City,
+    dg.EnglishCountryRegionName,
+    dg.StateProvinceName
+FROM
+    AdvendtureWorksDW2019.dbo.FactInternetSales
+LEFT JOIN
+    AdvendtureWorksDW2019.dbo.DimGeography dg ON 
+    FactInternetSales.SalesTerritoryKey = dg.SalesTerritoryKey
+DROP view vw_FactInternetSales
+--
+SELECT*
+FROM
+    vw_FactInternetSales
+--
+SELECT*
+FROM
+    vw_FactInternetSales
+--Nova Consulta
+--uni dimproduct com sub e category
+create view vw_Product AS
+SELECT
+    DimProduct.ProductKey,
+    DimProduct.ProductSubcategoryKey,
+    DimProduct.EnglishProductName,
+    DimProduct.SafetyStockLevel,
+    ps.EnglishProductSubcategoryName,
+    ps.ProductCategoryKey,
+    pc.EnglishProductName
+FROM
+    AdvendtureWorksDW2019.dbo.DimProduct
+LEFT JOIN
+    AdvendtureWorksDW2019.abo.DimProductSubcategory ps ON 
+    DimProduct.ProductSubcategoryKey = ps.ProductSubcategoryKey
+LEFT JOIN
+    AdvendtureWorksDW2019.dbo.DimProductSubcategory pc ON
+    ps.ProductCategoryKey = pc.ProductCategoryKey
+--
+SELECT*
+FROM    
+    vw_Product
+--Nova Consulta
+--customer
+SELECT*
+FROM
+    AdvendtureWorksDW2019.dbo.DimCustomer
+--
+create view vw_Customer AS
+SELECT
+    DimCustomer.CustomerKey,
+    DimCustomer.GeographyKey,
+    CONCAT(FirsName +' ', MiddleName + ' ', LastName) AS FullName,
+    DimCustomer.BirthDate,
+    DimCustomer.MaritalStatus,
+    DimCustomer.Gender,
+    DimCustomer.TotalChildren,
+    DimCustomer.EnglishEducation,
+    DimCustomer.EnglishOccupation,
+    DimCustomer.DateFirstPurchase,
+    dg.City,
+    dg.StateProvinceName,
+    dg.EnglishCountryRegionName
+FROM
+    AdvendtureWorksDW2019.dbo.DimCustomer
+LEFT JOIN
+    AdvendtureWorksDW2019.dbo.DimGeography dg ON 
+    DimCustomer.GeographyKey = dg.GeographyKey
+--
+SELECT*
+FROM
+    AdvendtureWorksDW2019.dbo.DimGeography
+--
+SELECT*
+FROM
+    vw_Customer
+--Nova Consultar
+SELECT*
+FROM
+    AdvendtureWorksDW2019.dbo.Promotion
+--
+create view vw_Promotion AS 
+SELECT
+    DimPromotion.PromotionKey,
+    DimPromotion.EnglishPromotionName,
+    DimPromotion.DiscountPct,
+    DimPromotion.EnglishPromotionType,
+    DimPromotion.EnglishPromotionCategory,
+    DimPromotion.StartDate,
+    DimPromotion.EndDate,
+    DimPromotion.MinQty,
+    DimPromotion.MaxQty
+FROM
+    AdvendtureWorksDW2019.dbo.Promotion
+--
+SELECT*
+FROM    
+    vw_Promotion
