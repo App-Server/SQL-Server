@@ -1,0 +1,71 @@
+# SQL-Server
+--Total de turmas por curso
+SELECT 
+    c.id_curso,
+    c.nome_curso,
+    COUNT(t.id_turma)
+    Total_Turmas
+FROM
+    dbo.turmas turmas
+INNER JOIN 
+    dbo.cursos c 
+    ON c.id_curso = t.id_curso
+GROUP BY
+    c.id_curso,
+    c.nome_curso
+
+--Todos os cursos, independente se há ou não turmas
+SELECT
+FROM
+    dbo.turmos t 
+RIGHT JOIN 
+    dbo.cursos cursos
+    ON c.id_curso = t.id_curso
+GROUP BY
+    c.nome_curso;
+
+--
+SELECT
+    c.*
+FROM
+    dbo.turmas t,
+    dbo.cursos c,
+WHERE 
+    c.id_curso = t.id_curso
+GROUP BY    
+    c.nome_curso
+
+--Lista completa de alunos
+SELECT
+    c.nome,
+    AT.valor,
+    AT.valor_desconto,
+    T.data_inicio,
+    T.data_termino,
+    A.nome,
+    A.sexo
+FROM
+    AlunosxTurmas 
+    AT
+INNER JOIN
+    dbo.turmas T ON T.id_turma = AT.id_turma
+INNER JOIN 
+    dbo.cursos C ON C.id_curso = t.id_curso
+INNER JOIN
+    dbo.alunos A ON A.id_aluno = AT.id_aluno
+
+--Quantidade de Turmas com alunos
+SELECT  
+    c.nome_curso,
+    t.id_turma,
+    COUNT(1)
+    Total
+FROM
+    dbo.Turmas t
+INNER JOIN
+    AlunosxTurmas AT ON AT.id_turma = t.id_turma
+INNER JOIN
+    cursos c ON c.id_curso = T.id_curso
+GROUP BY
+    c.nome_curso,
+    t.id_turma
