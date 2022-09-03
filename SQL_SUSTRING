@@ -1,0 +1,27 @@
+# SQL-Server
+--FUNÇOES DE TEXTO NO SQL SERVER 
+--Funções: SUBSTRING, TRANSALATE, UPPER, TREIM
+--Extras: CASE , IIF, WHILE, REPLACE
+--SUBSTRING
+
+SELECT 
+    substring('Alessandro Trovato',1, 10) AS Nome;
+    
+SELECT 
+    substring(a.nome, 1, 20) nome_parcial
+FROM
+    Alunos a;
+--
+SELECT 
+    a.nome, substring(a.nome, 1, 20) nome_parcial
+FROM    
+    Alunos a;
+
+--DOIS PRIMEIROS NOME
+--CASE / WHEN
+SELECT 
+    a.nome,
+CASE 
+    substring(a.nome, 1, 10)
+FROM
+    Alunos a
