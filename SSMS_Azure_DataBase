@@ -1,0 +1,54 @@
+--Consultar dados Azure
+/*No Pesquisador de Objetos, clique com o botão direito do mouse 
+em mySampleDatabase e selecione Nova Consulta. Abre uma nova janela de 
+consulta conectada ao banco de dados.*/
+SELECT
+    pc.NAme AS CategoryName, p.name AS ProductName
+FROM
+    [SalesLT].[ProductCategory] pc
+JOIN
+    [SalesLT].[Product] pc
+ON 
+    pc.productcategoryid = p.productcategoryid;
+----------------------------------------------------------------------------
+--Inserir dados
+--Execute esse código Transact-SQL INSERT para criar um produto na tabela
+INSERT INTO
+    [SalesLT].[Product]
+    ([NAme]
+    ,[ProductNumber]
+    ,[Color]
+    ,[ProductCategoyID]
+    ,[StadardCost]
+    ,[ListPrice]
+    ,[SellStartDAte])
+VALUES
+    ('myNewProduct'
+    ,123456789
+    ,'NewColor'
+    ,1
+    ,100
+    ,100
+    ,GETDATE() );
+/*Selecione Executar para inserir uma nova linha na tabela Product. 
+O painel Mensagens é exibido (1 linha afetada)*/
+----------------------------------------------------------------------------
+--Exibir o resultado
+SELECT* FROM [SalesLT].[Product]
+WHERE Name='myNewProduct'
+----------------------------------------------------------------------------
+--Atualizar dados
+/*Execute este código Transact-SQL UPDATE para modificar seu novo produto.
+Substitua a consulta anterior por aquela que retorna o novo registro criado 
+anteriormente:*/
+UPDATE
+   [SalesLT].[Product]
+SET 
+    [ListPrice] = 125
+WHERE Name = 'myNewProduct';
+----------------------------------------------------------------------------
+--Excluir dados
+/*Execute esse código Transact-SQL DELETE para remover o novo produto.
+Substitua a consulta anterior por esta.*/
+DELETE FROM [SalesLT].[Product]
+WHERE Name = 'myNewProduct';
