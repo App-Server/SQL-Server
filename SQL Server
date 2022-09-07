@@ -59,7 +59,7 @@ FROM
     CUSTOMERS
 WHERE NOT 
     COUNTRY='Germany';
-
+-------------------------------
 /*Combining AND, OR and NOT*/
 SELECT*
 FROM
@@ -68,6 +68,7 @@ WHERE
     COUNTRY='Germany'
     AND (CITY='Berlin'
     OR CITY='Munchen');
+-------------------------------    
 /*SQL JOIN*/
 /* A JOIN clause is used to combine rows from two or more tables, based on a related column between them.*/
 SELECT 
@@ -79,6 +80,7 @@ FROM
 INNER JOIN
     CUSTOMERS
     ON ORDERS.CUSTOMERID = CUSTOMERS.CUSTOMERID;
+-------------------------------
 /*SQL INNER JOIN*/
 SELECT 
     ORDERS.ORDERID,
@@ -88,6 +90,7 @@ FROM
 INNER JOIN
     CUSTOMERS 
     ON ORDERS.CUSTOMERID = CUSTOMERS.CUSTOMERID;
+-------------------------------
 /*JOIN THREE TABLES*/
 SELECT
     ORDERS.ORDERID,
@@ -99,6 +102,7 @@ INNER JOIN
     CUSTOMERS ON ORDERS.CUSTOMERID = CUSTOMERS.CUSTOMERID)
 INNER JOIN 
     SHIPPERS ON ORDERS.SHIPPERID = SHIPPERS.SHIPPERID);
+-------------------------------
 /*SQL LEFT JOIN*/
 SELECT
     CUSTOMERS.CUSTOMERNAME,
@@ -109,6 +113,7 @@ LEFT JOIN
     ORDERS ON CUSTOMERS.CUSTOMERID = ORDERS.CUSTOMERID
 ORDER BY
     CUSTOMERS.CUSTOMERNAME;
+-------------------------------
 /*SQL RIGHT JOIN*/
 SELECT
     ORDERS.ORDERID, 
@@ -120,6 +125,7 @@ RIGHT JOIN
     EMPLOYEES ON ORDERS.EMPLOYEEID = EMPLOYEES.EMPLOYEEID
 ORDER BY
     ORDERS.ORDERID;
+-------------------------------
 /*SQL FULL OUTEH JOIN*/
 SELECT
     CUSTOMERS.CUSTOMERNAME,
