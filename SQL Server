@@ -1,31 +1,34 @@
 SELECT* FROM CUSTOMERS 
-
+-------------------------------
 /* EXAMPLE*/
-
+-------------------------------
 SELECT 
     CUSTOMERNAME,
     CITY
 FROM 
     CUSTOMERS;
-    
+-------------------------------    
 /*SELECT DISTINCT*/
 
 SELECT
     COUNTRY
 FROM
     CUSTOMERS;
+-------------------------------    
 /*WHERE Clause Example*/
 SELECT*
 FROM
     CUSTOMERS
 WHERE
     COUNTRY='Mexico';
+-------------------------------    
 /*Example*/
 SELECT*
 FROM
     CUSTOMERS
 WHERE   
     CUSTOMEID=1;
+-------------------------------
 /*SQL AND, OR and NOT Operators*/
 SELECT*
 FROM
@@ -33,6 +36,7 @@ FROM
 WHERE
     COUNTRY='Germany'
     AND CITY='Berlin';
+-------------------------------    
 /*Exapmle*/
 SELECT*
 FROM
@@ -40,6 +44,7 @@ FROM
 WHERE   
     CITY='Berlin' 
     OR CITY='Munchen';
+-------------------------------
 /*Example*/
 SELECT*
 FROM    
@@ -47,6 +52,7 @@ FROM
 WHERE 
     COUNTRY='Germany'
     OR COUNTRY='Spain';
+-------------------------------    
 /*NOT Example*/
 SELECT*
 FROM
