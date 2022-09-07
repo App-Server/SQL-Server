@@ -135,6 +135,7 @@ FROM
 FULL OUTER JOIN 
     ORDERS ON CUSTOMERS.CUSTOMERID = ORDERS.CUSTOMERID
     ORDER BY CUSTOMERS.CUSTOMERNAME;
+-------------------------------
 /*SQL SELF JOIN*/
 SELECT
     A.CUSTOMERNAME AS CUSTOMERNAME1, B.CUSTOMERNAME AS CUSTOMERNAME2, A.CITY
@@ -146,6 +147,7 @@ AND
     A.CITY = B.CITY
 ORDER BY 
     A.CITY;
+-------------------------------
 /*SQL UNION*/
 SELECT 
     CITY
@@ -158,6 +160,7 @@ FROM
     SUPPLIERS
 ORDER BY
     CITY;
+-------------------------------
 /*SQL UNION ALL*/
 SELECT  
     CITY
@@ -170,6 +173,7 @@ FROM
     SUPPLIERS
 ORDER BY 
     CITY;
+-------------------------------
 /*SQL UNION WHERE*/
 SELECT
     CITY,
@@ -188,6 +192,7 @@ WHERE
     COUNTRY='Germany'
 ORDER BY
     CITY;
+-------------------------------
 /*SQL UNION ALL WHERE*/
 SELECT
     CITY,
@@ -198,6 +203,7 @@ WHERE
     COUNTRY='Germany'
 ORDER BY
     CITY;
+-------------------------------
 /*Another UNION Example*/
 SELECT  
     'CUSTOMER' AS TYPE,
@@ -214,6 +220,7 @@ SELECT
     COUNTRY
 FROM
     SUPPLIERS;
+-------------------------------
 /*SQL GROUP BY*/
 SELECT COUNT
     (CUSTOMERID),
@@ -222,6 +229,7 @@ FROM
     CUSTOMERS
 GROUP BY
     COUNTRY;
+-------------------------------
 --The following SQL statement lists the number of customers in each country, sorted high to low:
 SELECT COUNT 
     (CUSTOMERID),
@@ -233,6 +241,7 @@ GROUP BY
 ORDER BY COUNT 
     (CUSTMERID)
 DESC;
+-------------------------------
 /*GROPU BY JOIN*/
 SELECT
     SHIPPERS.SHIPPERNAME,
@@ -244,6 +253,7 @@ LEFT JOIN
     SHIPPERS ON ORDERS.SHIPPERID = SHIPPERS.SHIPPERID
 GROUP BY 
     SHIPPERNAME;
+-------------------------------
 /*SQL HAVING*/
 SELECT COUNT 
     (CUSTOMERID),
@@ -254,6 +264,7 @@ GROUP BY
     COUNTRY
 HAVING COUNT
     (CUSTOMERID) > 5;
+-------------------------------
 --Example
 SELECT COUNT
     (CUSTOMERID),
@@ -267,6 +278,7 @@ HAVING COUNT
 ORDER BY COUNT 
     (CUSTOMERID)
 DESC;
+-------------------------------
 --Example
 SELECT 
     EMPLOYEES.LASTNAME,
@@ -280,6 +292,7 @@ GROUP BY
     LASTNAME
 HAVING COUNT 
     (ORDERS.ORDERID) > 10;
+-------------------------------
 --Example
 SELECT 
     EMPLOYEES.LASTNAME,
@@ -295,6 +308,7 @@ GROUP BY
     LASTNAME
 HAVING COUNT 
     (ORDERS.ORDERID) > 25;
+-------------------------------
 /*SQL EXISTS*/
 SELECT  
     SUPPLIERNAME
@@ -302,6 +316,7 @@ FROM
     SUPPLIERS
 WHERE EXISTS (SELECT PRODUCTNAME FROM PRODUCTS WHERE PRODUCTS.SUPPLIERID = 
 SUPPLIERS.SUPPIERID AND PRICE < 20);
+-------------------------------
 /*SQL SELECT INTO*/
 SELECT*
 INTO
